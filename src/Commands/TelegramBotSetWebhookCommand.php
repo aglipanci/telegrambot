@@ -4,7 +4,7 @@ namespace AgliPanci\TelegramBot\Commands;
 
 use Illuminate\Console\Command;
 use Longman\TelegramBot\Exception\TelegramException;
-use Longman\TelegramBot\Telegram;
+use AgliPanci\TelegramBot\Facades\Telegram;
 
 class TelegramBotSetWebhookCommand extends Command
 {
