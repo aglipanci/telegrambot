@@ -1,0 +1,24 @@
+{
+  "name": "aglipanci/telegrambot",
+  "authors": [
+    {
+      "name": "Agli Panci",
+      "email": "agli.panci@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "AgliPanci\\TelegramBot\\": "src/"
+    }
+  },
+  "require": {
+    "longman/telegram-bot": "^0.74.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AgliPanci\\TelegramBot\\TelegramBotServiceProvider"
+      ]
+    }
+  }
+}
