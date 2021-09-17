@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Bot\Commands;
+
+use Longman\TelegramBot\Commands\SystemCommand;
+use Longman\TelegramBot\Entities\ServerResponse;
+use Longman\TelegramBot\Request as TelegramRequest;
+
+class DummyClass extends SystemCommand
+{
+    /**
+     * @var string
+     */
+    protected $name = 'command';
+
+    /**
+     * @var string
+     */
+    protected $description = 'Command description here';
+
+    /**
+     * @var string
+     */
+    protected $version = '1.0.0';
+
+
+    /**
+     * @var string
+     */
+    protected $usage = '/command_usage';
+
+    /**
+     * Execute command
+     *
+     * @return ServerResponse
+     */
+    public function execute(): ServerResponse
+    {
+        // your code
+
+        return TelegramRequest::emptyResponse();
+    }
+}

@@ -2,8 +2,9 @@
 
 namespace AgliPanci\TelegramBot;
 
+use AgliPanci\TelegramBot\Commands\MakeTelegramBotCommand;
 use AgliPanci\TelegramBot\Commands\TelegramBotSetWebhookCommand;
-use AgliPanci\TelegramBot\Http\Controllers\WebhookController;
+use AgliPanci\TelegramBot\Http\Controllers\TelegramBotWebhookController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Longman\TelegramBot\Telegram;
@@ -15,6 +16,7 @@ class TelegramBotServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 TelegramBotSetWebhookCommand::class,
+                MakeTelegramBotCommand::class
             ]);
         }
 
@@ -23,7 +25,7 @@ class TelegramBotServiceProvider extends ServiceProvider
         ], 'config');
 
         Route::macro('telegrambot', function (string $url, string $name = 'telegrambot') {
-            Route::post($url, WebhookController::class)->name($name);
+            Route::post($url, TelegramBotWebhookController::class)->name($name);
         });
     }
 

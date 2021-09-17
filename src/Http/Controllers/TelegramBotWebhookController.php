@@ -5,7 +5,7 @@ namespace AgliPanci\TelegramBot\Http\Controllers;
 use AgliPanci\TelegramBot\Facades\Telegram;
 use Illuminate\Http\Request;
 
-class WebhookController
+class TelegramBotWebhookController
 {
     public function __invoke(Request $request)
     {
