@@ -2,7 +2,9 @@
 
 namespace AgliPanci\TelegramBot\Commands;
 
+use AgliPanci\TelegramBot\Http\Controllers\TelegramBotWebhookController;
 use Illuminate\Console\Command;
+use Illuminate\Routing\Router;
 use Longman\TelegramBot\Exception\TelegramException;
 use AgliPanci\TelegramBot\Facades\Telegram;
 
@@ -14,8 +16,19 @@ class TelegramBotSetWebhookCommand extends Command
 
     public function handle()
     {
+        $routeName = app(Router::class)
+            ->getRoutes()
+            ->getByAction(TelegramBotWebhookController::class)
+            ?->getName();
+
+        $url = $routeName ? route($routeName) : config('telegrambot.webhook_url');
+
+        if (!$url) {
+            $this->error('URL not found.');
+        }
+
         try {
-            $result = Telegram::setWebhook(config('telegrambot.webhook_url'));
+            $result = Telegram::setWebhook($url);
 
             if ($result->isOk()) {
                 $this->info($result->getDescription());
