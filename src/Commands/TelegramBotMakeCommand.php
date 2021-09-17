@@ -5,9 +5,9 @@ namespace AgliPanci\TelegramBot\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
-class MakeTelegramBotCommand extends GeneratorCommand
+class TelegramBotMakeCommand extends GeneratorCommand
 {
-    protected $name = 'make:bot-command';
+    protected $name = 'telegram:make:command';
 
     protected $description = 'Create a new TelegramBot command';
 
